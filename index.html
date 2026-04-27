@@ -25,10 +25,10 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;bac
    mix-blend-mode: lighten hace que el negro sea transparente
    y solo se vean los píxeles verdes sobre el fondo oscuro.
 */
-.brand-header{text-align:center;margin-bottom:16px;display:flex;flex-direction:column;align-items:center;gap:6px;}
+.brand-header{text-align:center;margin-bottom:14px;display:flex;flex-direction:column;align-items:center;gap:6px;}
 .brand-logo-wrap{display:flex;align-items:center;justify-content:center;}
 .brand-logo-img{width:min(580px,85vw);height:auto;object-fit:contain;mix-blend-mode:screen;display:block;margin:0 auto;}
-.brand-tagline{font-family:var(--font-cond);font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--gray-500);margin:0;}
+.brand-tagline{font-family:var(--font-cond);font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--gray-500)}
 
 /* CARD */
 .card{background:var(--black-card);border:1px solid var(--black-line);border-radius:var(--r-lg);padding:34px 38px;margin-bottom:14px;position:relative;overflow:hidden}
@@ -48,7 +48,7 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;bac
 .form-group{display:flex;flex-direction:column;gap:7px}
 label{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--gray-500)}
 input[type=text],input[type=number],input[type=date]{padding:11px 14px;background:var(--black-soft);border:1px solid var(--black-muted);border-radius:var(--r-sm);font-size:15px;font-family:var(--font);color:var(--white);outline:none;transition:border-color .2s,box-shadow .2s;width:100%;user-select:text;-webkit-user-select:text;color-scheme:dark;}
-input:focus{border-color:var(--green);color:var(--err);display:none}.field-error{display:none;}
+input:focus{border-color:var(--green);}.field-error{display:none;}
 .field-error.visible{display:block;}
 
 /* BUTTONS */
@@ -73,8 +73,8 @@ input:focus{border-color:var(--green);color:var(--err);display:none}.field-error
 .timer{font-family:var(--font-cond);font-size:26px;font-weight:800;letter-spacing:.04em;color:var(--white);font-variant-numeric:tabular-nums;transition:color .3s}
 .timer.warning{color:var(--warn)}.timer.danger{color:var(--err)}
 .test-user-chip{display:flex;align-items:center;gap:8px;background:var(--black-muted);border-radius:20px;padding:5px 12px 5px 5px;flex-shrink:0}
-.user-avatar{width:24px;height:24px;border-radius:50%;background:var(--green-dim);display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:800;color:var(--green);flex-shrink:0;font-family:var(--font-cond)}
-.user-name{font-size:12px;color:var(--gray-300);white-space:nowrap;max-width:110px;overflow:hidden;text-overflow:ellipsis}
+.user-avatar{width:24px;height:24px;background:var(--green-dim);display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:800;color:var(--green);flex-shrink:0;font-family:var(--font-cond)}
+.user-name{font-size:12px;color:var(--gray-300);white-space:nowrap;max-width:110px;text-overflow:ellipsis}
 
 /* QUESTION */
 .q-tag{display:inline-block;font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:3px 10px;border-radius:3px;margin-bottom:12px;border:1px solid}
@@ -89,9 +89,9 @@ input:focus{border-color:var(--green);color:var(--err);display:none}.field-error
 .options{display:flex;flex-direction:column;gap:9px}
 .option-label{display:flex;align-items:center;gap:14px;padding:13px 16px;background:var(--black-soft);border:1px solid var(--black-muted);border-radius:var(--r-sm);cursor:pointer;transition:border-color .15s,background .15s;}
 .option-label:hover{border-color:var(--green-dim);background:var(--green-glow)}
-.option-label.selected-opt{border-color:var(--green);background:var(--green-glow);height:18px;border-radius:50%;border:2px solid var(--black-muted);flex-shrink:0;display:flex;align-items:center;justify-content:center;transition:border-color .15s,background .15s}
+.option-label.selected-opt{border-color:var(--green);background:var(--green-glow);height:18px;border:2px solid var(--black-muted);flex-shrink:0;display:flex;align-items:center;justify-content:center;transition:border-color .15s,background .15s}
 .option-label.selected-opt .opt-circle{border-color:var(--green);background:var(--green)}
-.opt-dot{width:7px;height:7px;border-radius:50%;background:var(--black);display:none}
+.opt-dot{width:7px;height:7px;background:var(--black);display:none}
 .option-label.selected-opt .opt-dot{display:block}
 .opt-letter{font-family:var(--font-cond);font-size:13px;font-weight:700;color:var(--gray-700);min-width:16px}
 .option-label.selected-opt .opt-letter{color:var(--green)}
@@ -153,6 +153,21 @@ input:focus{border-color:var(--green);color:var(--err);display:none}.field-error
 .ans-a.wrong{color:#ff4444;}
 .ans-exp{font-size:11px;color:var(--yellow);margin-top:5px;padding:5px 8px;background:rgba(245,166,35,0.07);border-radius:4px;border-left:2px solid var(--yellow);line-height:1.5;}
 .breakdown-grid{grid-template-columns:repeat(2,1fr)}.result-hero{flex-direction:column;text-align:center}.score-num{font-size:54px}}
+
+/* ── INPUT PROTECTION ── */
+#start-form input,
+#start-form input[type="text"],
+#start-form input[type="number"],
+#start-form input[type="date"] {
+  pointer-events: auto !important;
+  user-select: text !important;
+  -webkit-user-select: text !important;
+  cursor: text !important;
+}
+#start-form button#btn-start {
+  pointer-events: auto !important;
+  cursor: pointer !important;
+}
 </style>
 </head>
 <body>
@@ -298,9 +313,13 @@ var jsPDFReady = false;
 <script>
 const LS_KEY = "maximus_test_adv_v1";
 try{localStorage.removeItem(LS_KEY);}catch(e){}
+try{localStorage.removeItem(LS_KEY);}catch(e){}
 
-/* security disabled for testing */
-/* devtools detector disabled */
+/* contextmenu disabled */
+document.addEventListener("keydown",e=>{
+  if(e.key==="F12"||(e.ctrlKey&&e.shiftKey&&["I","J","C"].includes(e.key))||(e.ctrlKey&&["U","S","P"].includes(e.key))||(e.metaKey&&e.altKey&&e.key==="I")){e.preventDefault();e.stopPropagation();return false;}
+},true);
+/* devtools disabled */
 window.addEventListener("beforeunload",e=>{
   if(testState==="running"){lsSet({status:"started",nombre:userData.nombre,apellido:userData.apellido});const m="Si sal\u00eds, el test quedar\u00e1 como interrumpido.";e.returnValue=m;return m;}
 });
@@ -308,11 +327,7 @@ window.addEventListener("beforeunload",e=>{
 /* visibilitychange disabled */
 
 /* Seguridad: perder el foco de la ventana (alt+tab, click fuera) también termina el test */
-window.addEventListener("blur",()=>{
-  if(testState==="running"){
-    finishTest(true);
-  }
-});
+/* blur disabled */
 function lsGet(){try{return JSON.parse(localStorage.getItem(LS_KEY))||null;}catch(e){return null;}}
 function lsSet(d){try{localStorage.setItem(LS_KEY,JSON.stringify(d));}catch(e){}}
 
@@ -348,6 +363,7 @@ const LETRAS=["A","B","C","D"];
 let userData={},curIdx=0,answers=[],timerSec=420,timerInt=null,startTime=null,testEnded=false,testState="idle";
 
 (function init(){
+  try{localStorage.removeItem(LS_KEY);}catch(e){}
   document.getElementById("brand-logo").src = LOGO_B64;
   document.getElementById("inp-fecha").value = new Date().toISOString().split("T")[0];
   const s=lsGet();
@@ -358,7 +374,12 @@ let userData={},curIdx=0,answers=[],timerSec=420,timerInt=null,startTime=null,te
       :"El test fue interrumpido. Contact\u00e1 a Recursos Humanos.";
     show("screen-blocked");
   }else{show("screen-form");}
-  ["inp-nombre","inp-apellido","inp-edad","inp-fecha"].forEach(id=>document.getElementById(id).addEventListener("input",validateForm));
+  ["inp-nombre","inp-apellido","inp-edad","inp-fecha"].forEach(id=>{
+    const el=document.getElementById(id);
+    if(el){el.removeAttribute("disabled");el.style.pointerEvents="auto";el.addEventListener("input",validateForm);}
+  });
+  validateForm();
+  show("screen-form");
 })();
 
 function validateForm(){
@@ -532,51 +553,20 @@ function generatePDF(){
      [LOGO 32×32] | [WORDMARK + SUBTÍTULO + TÍTULO]  [FECHA]
      Altura total: 50mm, centrado verticalmente
   ════════════════════════════════════════════════════ */
-  const HDR_H = 50;
+  /* ── HEADER: logo horizontal centrado ── */
+  const HDR_H = 36;
+  const LOGO_W = 120, LOGO_H = 23;
 
-  /* Fondo negro */
   rect(0, 0, W, HDR_H, BK);
-
-  /* Línea verde inferior */
   rect(0, HDR_H-1.6, W, 1.6, GRN);
 
-  /* ── LOGO: centrado verticalmente en 32×32, con margen izq ── */
-  const LOGO_SIZE = 34;
-  const LOGO_X    = ML;
-  const LOGO_Y    = (HDR_H - LOGO_SIZE) / 2;          /* centrado vertical */
-  try{ doc.addImage(LOGO_B64,"JPEG", LOGO_X, LOGO_Y, LOGO_SIZE, LOGO_SIZE); }catch(e){}
+  const LOGO_X_H = (W - LOGO_W) / 2;
+  const LOGO_Y_H = (HDR_H - LOGO_H) / 2;
+  try{ doc.addImage(LOGO_B64, "PNG", LOGO_X_H, LOGO_Y_H, LOGO_W, LOGO_H); }catch(e){}
 
-  /* ── Separador vertical ── */
-  const SEP_X = LOGO_X + LOGO_SIZE + 6;
-  vline(SEP_X, 8, HDR_H-8, BK3, .6);
+  T(ahora, W-MR, 9, {sz:7.5, c:G3, align:"right"});
 
-  /* ── Textos wordmark — alineados a la izq del separador ── */
-  const TXT_X = SEP_X + 6;
-
-  /* "MAXIMUS" — centrado en la mitad superior del header */
-  doc.setFont("helvetica","bold"); doc.setFontSize(19); doc.setCharSpace(3);
-  doc.setTextColor.apply(doc,WH);
-  doc.text("MAXIMUS", TXT_X, 18);
-  doc.setCharSpace(0);
-
-  /* "GAMING HARDWARE" */
-  doc.setFont("helvetica","normal"); doc.setFontSize(7.5); doc.setCharSpace(2);
-  doc.setTextColor.apply(doc,G3);
-  doc.text("GAMING HARDWARE", TXT_X+1, 26);
-  doc.setCharSpace(0);
-
-  /* Separador horizontal fino entre subtítulo y título */
-  hline(30, TXT_X, CW - (SEP_X + 6 - ML) - 2, BK3, .4);
-
-  /* Título principal "EVALUACIÓN TÉCNICA AVANZADA" */
-  doc.setFont("helvetica","bold"); doc.setFontSize(9); doc.setCharSpace(.5);
-  doc.setTextColor.apply(doc,WH);
-  doc.text("EVALUACI\u00d3N T\u00c9CNICA DE POSTULANTES", TXT_X, 40);
-  doc.setCharSpace(0);
-
-  /* Fecha — alineada a la derecha, centrada verticalmente en la mitad superior */
-  T(ahora, W-MR, 13, {sz:8.5, c:G3, align:"right"});
-
+  
   /* ══════════════════════════════════════════════════
      BLOQUE POSTULANTE
      Layout: 2 columnas con Grid implícita
